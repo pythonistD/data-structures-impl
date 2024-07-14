@@ -51,10 +51,6 @@ public class MyLinkedList<E> implements IMyList<E>{
             newNode.next = n;
             n.prev = newNode;
         }
-        while(n!=null){
-            n.index++;
-            n = n.next;
-        }
         counter++;
     }
 
@@ -87,10 +83,6 @@ public class MyLinkedList<E> implements IMyList<E>{
             next.prev = prev;
             counter--;
         }
-        while(n != null){
-            n.index--;
-            n = n.next;
-        }
     }
 
     @Override
@@ -113,24 +105,21 @@ public class MyLinkedList<E> implements IMyList<E>{
 
     @Override
     public int indexOf(E e) {
-        Node<E> n = findByValue(e);
-        if(n == null) return -1;
-        return n.index;
-    }
-
-    private Node<E> findByValue(E e){
-        Node<E> cur = first;
-        while(cur!=null){
-            if(cur.val.equals(e)) return cur;
-            cur = cur.next;
+        Node<E> n = first;
+        int i = 0;
+        while(n!= null){
+            if(n.val.equals(e)) return i;
+            i++;
+            n = n.next;
         }
-        return null;
+        return -1;
     }
 
     private Node<E> findByIndex(int index){
         Node<E> cur = first;
+        int i = 0;
         while(cur!=null){
-            if(cur.index == index) return cur;
+            if(i++ == index) return cur;
             cur = cur.next;
         }
         return null;
@@ -194,12 +183,10 @@ public class MyLinkedList<E> implements IMyList<E>{
         Node<E> next;
         Node<E> prev;
         E val;
-        int index;
         public Node(Node<E> prev, Node<E> next, E val, int index) {
             this.prev = prev;
             this.next = next;
             this.val = val;
-            this.index = index;
         }
     }
 }
