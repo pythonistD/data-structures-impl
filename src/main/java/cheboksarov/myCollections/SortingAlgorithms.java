@@ -4,6 +4,13 @@ import java.util.Comparator;
 
 public class SortingAlgorithms {
 
+    public static <T> void sort(T[] arr, Comparator<Object> c) {
+        if(c==null){
+            bubbleSort(arr);
+        }else{
+            bubbleSort(arr, c);
+        }
+    }
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static <T> void bubbleSort(T[] arr) {
         for(int i = 0; i < arr.length - 1 - i; i++) {

@@ -21,7 +21,7 @@ public interface IMyList<E> extends Iterable<E>{
     @SuppressWarnings("unchecked")
     default void sort(){
         Object[] array = this.toArray();
-        SortingAlgorithms.bubbleSort(array);
+        SortingAlgorithms.sort(array, null);
         IMyListIterator<E> it = this.iterator();
         for(Object e : array){
             it.next();
