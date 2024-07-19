@@ -153,6 +153,13 @@ public class MyLinkedList<E> implements IMyList<E>{
     public IMyListIterator<E> iterator() {
         return new MyListIterator<>(this);
     }
+
+    @Override
+    public void set(int index, E e) {
+        add(index, e);
+        remove(index+1);
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public void sort(){

@@ -17,6 +17,7 @@ public interface IMyList<E> extends Iterable<E>{
     Object[] toArray();
     boolean isEmpty();
     IMyListIterator<E> iterator();
+    void set(int index, E e);
 
     @SuppressWarnings("unchecked")
     default void sort(){

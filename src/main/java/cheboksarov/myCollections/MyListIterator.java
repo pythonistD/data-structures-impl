@@ -26,7 +26,8 @@ public class MyListIterator<T> implements IMyListIterator<T> {
     public void set(T t) {
         if(collection.isEmpty()) throw new IndexOutOfBoundsException("Collection is empty");
         int lastElIndex = index - 1;
-        collection.add(lastElIndex, t);
-        collection.remove(index);
+        collection.set(lastElIndex, t);
+        /*collection.add(lastElIndex, t);
+        collection.remove(index);*/
     }
 }
