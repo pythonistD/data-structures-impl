@@ -15,6 +15,16 @@ public class UnionFindTest {
         System.out.println(uf);
         assertEquals(4, uf.find(4));
     }
+    @Test
+    public void pathCompressionTest(){
+        UnionFind uf = new UnionFind(5);
+        uf.union(0, 1);
+        uf.union(2, 1);
+        uf.union(3, 2);
+        uf.union(4, 3);
+        System.out.println(Arrays.toString(uf.getParent()));
+        assertArrayEquals(new int[]{0,0,0,0,0}, uf.getParent());
+    }
 
     @Test
     public void unionSingleNodesMergeTest(){

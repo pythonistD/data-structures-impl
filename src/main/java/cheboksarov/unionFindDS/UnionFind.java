@@ -25,8 +25,16 @@ public class UnionFind implements IUnionFind{
     }
     @Override
     public int find(int node) {
-        if(parent[node] == node) return node;
-        return find(parent[node]);
+        int root = node;
+        while(root!= parent[root]) root = parent[root];
+        // Path compression
+        int next = node;
+        while(root != next){
+            int t = parent[next];
+            parent[next] = root;
+            next = t;
+        }
+        return root;
     }
 
     @Override
